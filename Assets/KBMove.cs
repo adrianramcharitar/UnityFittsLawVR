@@ -8,6 +8,9 @@ public class KBMove : MonoBehaviour {
 
     public float mouseMoveSpeed = 5;
 
+    public MouseAcceleration accScript;
+    public bool gain;
+
     // Use this for initialization
     void Start () {
 
@@ -19,7 +22,11 @@ public class KBMove : MonoBehaviour {
 
 
         Vector2 mousePos = pointer.GetComponent<RectTransform>().localPosition;
-        mousePos += new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseMoveSpeed;
+        if (gain == true) {
+            mousePos += new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseMoveSpeed;
+        }else if(gain == false) {
+            mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationFactorX, Input.GetAxis("Mouse Y") * accScript.accelerationFactorY) * mouseMoveSpeed;
+        }
         float currentPanelWidth = GetComponent<RectTransform>().rect.width;
         float currentPanelHeight = GetComponent<RectTransform>().rect.height;
         mousePos.x = Mathf.Clamp(mousePos.x, -currentPanelWidth / 2, currentPanelWidth / 2);
