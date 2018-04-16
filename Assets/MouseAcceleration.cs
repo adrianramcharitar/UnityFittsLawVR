@@ -13,8 +13,10 @@ public class MouseAcceleration : MonoBehaviour {
     public float accelerationFactorY;
 
 
-    public float linearity = 4f;
-    public float intersection = 0.5f;
+    public static float linearity = 4f;
+    public static float intersection = 0.5f;
+
+
 
 
 

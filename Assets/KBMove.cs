@@ -9,7 +9,7 @@ public class KBMove : MonoBehaviour {
     public float mouseMoveSpeed = 5;
 
     public MouseAcceleration accScript;
-    public bool gain;
+    public static bool gain;
 
     // Use this for initialization
     void Start () {

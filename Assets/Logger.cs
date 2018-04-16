@@ -57,6 +57,9 @@ public class Logger : MonoBehaviour {
     public static float mt;
     public static int error;
 
+    public static float acclin;
+    public static float accint;
+
     //Per round variables
 
     public static string participantRound; 
@@ -94,7 +97,12 @@ public class Logger : MonoBehaviour {
 
        
         writeRound2.WriteLine("Participant,Condition,Block,Trial,A,W,Depth,dx,MT(s),Error");
-        writeSummary2.WriteLine("Participant,Condition,Block,Trials,A,W,Depth,id,We,IDe,MT(s),Error Rate,TP");
+
+        if (KBMove.gain == false) {
+            writeSummary2.WriteLine("Participant,Condition,Block,Trials,A,W,Depth,id,We,IDe,MT(s),Error Rate,TP,Intersection,Linearity");
+        } else {
+            writeSummary2.WriteLine("Participant,Condition,Block,Trials,A,W,Depth,id,We,IDe,MT(s),Error Rate,TP");
+        }
 
        
 
@@ -155,8 +163,14 @@ public class Logger : MonoBehaviour {
         averageMt = (float) TimerArrayAverage.CalculateTimerAverage(timerArray);
         TP = EffectiveWidth.throughput;
 
-        writeSummary2.WriteLine(participant + "," + condition + "," + block + "," + totalNumTrials + "," + ampRound + "," + widthRound + "," + depthRound + "," + id + "," + effectiveWidth + "," + effectiveid + "," + averageMt + "," + errorRate + "," + TP);
+        accint = MouseAcceleration.intersection;
+        acclin = MouseAcceleration.linearity;
 
+        if (KBMove.gain == false) {
+            writeSummary2.WriteLine(participant + "," + condition + "," + block + "," + totalNumTrials + "," + ampRound + "," + widthRound + "," + depthRound + "," + id + "," + effectiveWidth + "," + effectiveid + "," + averageMt + "," + errorRate + "," + TP + "," + accint + "," + acclin);
+        } else {
+            writeSummary2.WriteLine(participant + "," + condition + "," + block + "," + totalNumTrials + "," + ampRound + "," + widthRound + "," + depthRound + "," + id + "," + effectiveWidth + "," + effectiveid + "," + averageMt + "," + errorRate + "," + TP);
+        }
       
 
 
