@@ -51,7 +51,7 @@ public class MouseAcceleration : MonoBehaviour {
 
         accelerationFactorX = Mathf.Abs(curMouseX);
         accelerationFactorY = Mathf.Abs(curMouseY);
-        Debug.Log("Acc Abs X: " + accelerationFactorX + " Acc Abs Y: " + accelerationFactorY);
+      //  Debug.Log("Acc Abs X: " + accelerationFactorX + " Acc Abs Y: " + accelerationFactorY);
     }
 
 

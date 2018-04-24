@@ -1196,6 +1196,7 @@ GameObject:
   - component: {fileID: 1488766937}
   - component: {fileID: 1488766938}
   - component: {fileID: 1488766939}
+  - component: {fileID: 1488766940}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1431,6 +1432,17 @@ MonoBehaviour:
   reticle: {fileID: 480110627}
   m_ReticleTransform: {fileID: 480110631}
   m_Camera: {fileID: 1488766928}
+--- !u!114 &1488766940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1488766923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88d70cc86c49714ebd52f1c0116926b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1511800238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1918,7 +1930,6 @@ MonoBehaviour:
   pointer: {fileID: 1931297875}
   mouseMoveSpeed: 7
   accScript: {fileID: 1703760617}
-  gain: 1
 --- !u!65 &1703760609
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2067,8 +2078,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelerationFactorX: 0
   accelerationFactorY: 0
-  linearity: 4
-  intersection: 0.5
 --- !u!1 &1748270888
 GameObject:
   m_ObjectHideFlags: 0
