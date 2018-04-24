@@ -44,7 +44,7 @@ public class Logger : MonoBehaviour {
     public static StreamWriter writeSummary2 = new StreamWriter(@"C:\Users\adria\Desktop\log_summary2.txt" , true);
 
 
-    //Per selection variables
+    //PER SELECTION VARIABLES
 
     public static string participant;
     public static string condition;
@@ -57,10 +57,11 @@ public class Logger : MonoBehaviour {
     public static float mt;
     public static int error;
 
-    public static float acclin;
-    public static float accint;
+    //Delta is cursor change
+    public static float deltaX;
+    public static float deltaY;
 
-    //Per round variables
+    //PER ROUND VARIABLES
 
     public static string participantRound; 
     public static string conditionRound; 
@@ -75,6 +76,12 @@ public class Logger : MonoBehaviour {
     public static float averageMt;
     public static float errorRate;
     public static float TP;
+
+    //Acceleration function
+    public static float acclin;
+    public static float accint;
+
+
 
 
 
@@ -96,7 +103,7 @@ public class Logger : MonoBehaviour {
         clickTime = 0;
 
        
-        writeRound2.WriteLine("Participant,Condition,Block,Trial,A,W,Depth,dx,MT(s),Error");
+        writeRound2.WriteLine("Participant,Condition,Block,Trial,A,W,Depth,dx,MT(s),Error,DeltaX,DeltaY");
 
         if (KBMove.gain == false) {
             writeSummary2.WriteLine("Participant,Condition,Block,Trials,A,W,Depth,id,We,IDe,MT(s),Error Rate,TP,Intersection,Linearity");
@@ -124,6 +131,9 @@ public class Logger : MonoBehaviour {
         depth = ExperimentController.permuArray[ExperimentController.i - 1][2];
         dx = EffectiveWidth.length;
 
+        deltaX = DeltaPosition.delta.x;
+        deltaY = DeltaPosition.delta.y;
+
         /*
         if(PlaceSpheres.currentSphere == 1) {
 
@@ -131,7 +141,7 @@ public class Logger : MonoBehaviour {
         }
         */
 
-        writeRound2.WriteLine(participant + "," + condition + "," + block + "," + trial + "," + amp + "," + width + "," + depth + "," + dx + "," + mt + "," + error);
+        writeRound2.WriteLine(participant + "," + condition + "," + block + "," + trial + "," + amp + "," + width + "," + depth + "," + dx + "," + mt + "," + error + "," + deltaX + "," + deltaY);
 
         //  Debug.Log(participant + " " + condition + " " + block + " " + trial + " " + amp + " " + width + " " + depth + " " + dx + " " + mt + " " + error);
 

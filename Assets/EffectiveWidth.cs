@@ -126,7 +126,7 @@ public class EffectiveWidth : MonoBehaviour {
     public static void PrintLenghArray() {
 
         for(int i = 0; i < lengtharray.Length; i++) {
-            Debug.Log(lengtharray[i]);
+          //  Debug.Log(lengtharray[i]);
         }
 
     }

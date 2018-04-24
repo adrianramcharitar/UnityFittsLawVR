@@ -5,7 +5,7 @@ using VRStandardAssets.Utils;
 
 public class DeltaPosition : MonoBehaviour {
 
-    public Vector3 delta;
+    public static Vector3 delta;
     private Vector3 lastPos;
 
     public GameObject pointer;
