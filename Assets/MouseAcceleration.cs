@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 //Handles mouse acceleration
 public class MouseAcceleration : MonoBehaviour {
 
@@ -13,16 +14,21 @@ public class MouseAcceleration : MonoBehaviour {
     public float accelerationFactorY;
 
 
-    public static float linearity = 4f;
-    public static float intersection = 0.5f;
+    public static float linearity;
+    public static float intersection;
 
 
+    public float setLinearity = 4f;
+    public float setIntersection = 0.5f;
 
 
 
 
     // Use this for initialization
     void Start() {
+
+        linearity = setLinearity;
+        intersection = setIntersection;
 
     }
 
@@ -31,6 +37,8 @@ public class MouseAcceleration : MonoBehaviour {
 
         float curMouseX = Input.GetAxisRaw("Mouse X");
         float curMouseY = Input.GetAxisRaw("Mouse Y");
+
+        Debug.Log(Input.GetAxisRaw("Mouse X"));
 
 
         //   if (mouseAcceleration) {

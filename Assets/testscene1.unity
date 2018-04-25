@@ -1368,7 +1368,7 @@ MonoBehaviour:
   minRenderScale: 0.7
   maxRenderScale: 1
   _trackingOriginType: 0
-  usePositionTracking: 1
+  usePositionTracking: 0
   useRotationTracking: 1
   useIPDInPositionTracking: 1
   resetTrackerOnLoad: 0
@@ -2079,6 +2079,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelerationFactorX: 0
   accelerationFactorY: 0
+  setLinearity: 4
+  setIntersection: 0.5
 --- !u!1 &1748270888
 GameObject:
   m_ObjectHideFlags: 0
