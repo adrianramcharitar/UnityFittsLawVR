@@ -33,7 +33,7 @@ public class CursorRaycaster : MonoBehaviour {
 
     public VRInput m_VrInput;
 
-    private Ray ray;
+    public static Ray ray;
     private RaycastHit hit;
     private Vector3 rayStart;
     private Vector3 rayDir;

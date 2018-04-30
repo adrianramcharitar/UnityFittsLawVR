@@ -38,7 +38,7 @@ public class MouseAcceleration : MonoBehaviour {
         float curMouseX = Input.GetAxisRaw("Mouse X");
         float curMouseY = Input.GetAxisRaw("Mouse Y");
 
-        Debug.Log(Input.GetAxisRaw("Mouse X"));
+      //  Debug.Log(Input.GetAxisRaw("Mouse X"));
 
 
         //   if (mouseAcceleration) {

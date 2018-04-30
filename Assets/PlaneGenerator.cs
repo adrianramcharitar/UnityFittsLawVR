@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlaneGenerator : MonoBehaviour {
 
     GameObject cube;
+    public static Vector3 cubeCenter;
 
 
 
@@ -25,6 +26,7 @@ public class PlaneGenerator : MonoBehaviour {
 	void Update () {
 
         positionPlane();
+        cubeCenter = cube.transform.position;
 
     }
 

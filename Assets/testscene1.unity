@@ -514,7 +514,7 @@ Transform:
   m_GameObject: {fileID: 480110627}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.404, y: 1.2591081, z: 5.495}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 0.0000001}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -1197,6 +1197,7 @@ GameObject:
   - component: {fileID: 1488766938}
   - component: {fileID: 1488766939}
   - component: {fileID: 1488766940}
+  - component: {fileID: 1488766941}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1370,8 +1371,8 @@ MonoBehaviour:
   _trackingOriginType: 0
   usePositionTracking: 0
   useRotationTracking: 1
-  useIPDInPositionTracking: 1
-  resetTrackerOnLoad: 0
+  useIPDInPositionTracking: 0
+  resetTrackerOnLoad: 1
 --- !u!114 &1488766936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1438,12 +1439,27 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1488766923}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f88d70cc86c49714ebd52f1c0116926b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointer: {fileID: 1931297875}
+--- !u!114 &1488766941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1488766923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ea9378aa8d39e84fa6c3d69ef6bc697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPos1: {x: 0, y: 0, z: 0}
+  currentPos2: {x: 0, y: 0, z: 0}
+  canvas: {fileID: 1703760606}
+  cursor: {fileID: 1931297875}
 --- !u!1 &1511800238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,7 +1945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointer: {fileID: 1931297875}
-  mouseMoveSpeed: 7
+  mouseMoveSpeed: 3
   accScript: {fileID: 1703760617}
 --- !u!65 &1703760609
 BoxCollider:
@@ -2079,8 +2095,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accelerationFactorX: 0
   accelerationFactorY: 0
-  setLinearity: 4
-  setIntersection: 0.5
+  setLinearity: 20
+  setIntersection: 4
 --- !u!1 &1748270888
 GameObject:
   m_ObjectHideFlags: 0
