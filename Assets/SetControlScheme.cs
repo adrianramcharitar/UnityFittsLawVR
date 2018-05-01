@@ -26,10 +26,12 @@ public class SetControlScheme : MonoBehaviour {
     private MotionControllerRaycast scriptmotionray;
     //private MotionControllerRaycast scriptmotiontracked;
     private MotionController2 scriptmotiontracked;
+    private DisableRotation disablerotationscript;
 
     public float trackPosSpeed;
     public int trackRateSpeed;
     public int motionGain;
+    public bool disableRotation = false;
 
     public string participantCode = "null";
     public string conditonCode = "null";
@@ -43,6 +45,15 @@ public class SetControlScheme : MonoBehaviour {
         scriptmotionray = GameObject.Find("TrackedHand").GetComponent<MotionControllerRaycast>();
         //  scriptmotiontracked = GameObject.Find("TrackedHand").GetComponent<MotionControllerRaycast>();
         scriptmotiontracked = GameObject.Find("TrackedHand").GetComponent<MotionController2>();
+        disablerotationscript = GameObject.Find("GameObject").GetComponent<DisableRotation>();
+        
+        if (disableRotation == true) {
+            disablerotationscript.enabled = true;
+            Logger.headmove = 1;
+        } else {
+            disablerotationscript.enabled = false;
+            Logger.headmove = 0;
+        }
 
 
 

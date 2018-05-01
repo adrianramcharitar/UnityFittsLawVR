@@ -56,6 +56,7 @@ public class Logger : MonoBehaviour {
     public static float dx;
     public static float mt;
     public static int error;
+    public static int headmove;
 
     //Magnitude is cursor change
     public static float cursorMag;
@@ -103,10 +104,10 @@ public class Logger : MonoBehaviour {
         clickTime = 0;
 
        
-        writeRound2.WriteLine("Participant,Condition,Block,Trial,A,W,Depth,dx,MT(s),Error,CursorMag,CameraMag");
+        writeRound2.WriteLine("Participant,Condition,Block,Trial,A,W,Depth,dx,MT(s),Error,Head Tracking,CursorMag,CameraMag");
 
         if (KBMove.gain == false) {
-            writeSummary2.WriteLine("Participant,Condition,Block,Trials,A,W,Depth,id,We,IDe,MT(s),Error Rate,TP,Intersection,Linearity");
+            writeSummary2.WriteLine("Participant,Condition,Block,Trials,A,W,Depth,id,We,IDe,MT(s),Error Rate,TP,Head Tracking,Intersection,Linearity");
         } else {
             writeSummary2.WriteLine("Participant,Condition,Block,Trials,A,W,Depth,id,We,IDe,MT(s),Error Rate,TP");
         }
@@ -141,7 +142,7 @@ public class Logger : MonoBehaviour {
         }
         */
 
-        writeRound2.WriteLine(participant + "," + condition + "," + block + "," + trial + "," + amp + "," + width + "," + depth + "," + dx + "," + mt + "," + error + "," + cursorMag + "," + cameraMag);
+        writeRound2.WriteLine(participant + "," + condition + "," + block + "," + trial + "," + amp + "," + width + "," + depth + "," + dx + "," + mt + "," + error + "," + headmove + "," + cursorMag + "," + cameraMag);
 
         //  Debug.Log(participant + " " + condition + " " + block + " " + trial + " " + amp + " " + width + " " + depth + " " + dx + " " + mt + " " + error);
 
@@ -177,7 +178,7 @@ public class Logger : MonoBehaviour {
         acclin = MouseAcceleration.linearity;
 
         if (KBMove.gain == false) {
-            writeSummary2.WriteLine(participant + "," + condition + "," + block + "," + totalNumTrials + "," + ampRound + "," + widthRound + "," + depthRound + "," + id + "," + effectiveWidth + "," + effectiveid + "," + averageMt + "," + errorRate + "," + TP + "," + accint + "," + acclin);
+            writeSummary2.WriteLine(participant + "," + condition + "," + block + "," + totalNumTrials + "," + ampRound + "," + widthRound + "," + depthRound + "," + id + "," + effectiveWidth + "," + effectiveid + "," + averageMt + "," + errorRate + "," + TP + "," + headmove + "," + accint + "," + acclin);
         } else {
             writeSummary2.WriteLine(participant + "," + condition + "," + block + "," + totalNumTrials + "," + ampRound + "," + widthRound + "," + depthRound + "," + id + "," + effectiveWidth + "," + effectiveid + "," + averageMt + "," + errorRate + "," + TP);
         }
