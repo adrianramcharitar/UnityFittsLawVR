@@ -57,9 +57,9 @@ public class Logger : MonoBehaviour {
     public static float mt;
     public static int error;
 
-    //Delta is cursor change
-    public static float deltaX;
-    public static float deltaY;
+    //Magnitude is cursor change
+    public static float cursorMag;
+    public static float cameraMag;
 
     //PER ROUND VARIABLES
 
@@ -103,7 +103,7 @@ public class Logger : MonoBehaviour {
         clickTime = 0;
 
        
-        writeRound2.WriteLine("Participant,Condition,Block,Trial,A,W,Depth,dx,MT(s),Error,DeltaX,DeltaY");
+        writeRound2.WriteLine("Participant,Condition,Block,Trial,A,W,Depth,dx,MT(s),Error,CursorMag,CameraMag");
 
         if (KBMove.gain == false) {
             writeSummary2.WriteLine("Participant,Condition,Block,Trials,A,W,Depth,id,We,IDe,MT(s),Error Rate,TP,Intersection,Linearity");
@@ -131,8 +131,8 @@ public class Logger : MonoBehaviour {
         depth = ExperimentController.permuArray[ExperimentController.i - 1][2];
         dx = EffectiveWidth.length;
 
-        deltaX = DeltaPosition.delta.x;
-        deltaY = DeltaPosition.delta.y;
+        cameraMag = DeltaPosition2.cameraMag;
+        cursorMag = DeltaPosition2.cursorMag;
 
         /*
         if(PlaceSpheres.currentSphere == 1) {
@@ -141,7 +141,7 @@ public class Logger : MonoBehaviour {
         }
         */
 
-        writeRound2.WriteLine(participant + "," + condition + "," + block + "," + trial + "," + amp + "," + width + "," + depth + "," + dx + "," + mt + "," + error + "," + deltaX + "," + deltaY);
+        writeRound2.WriteLine(participant + "," + condition + "," + block + "," + trial + "," + amp + "," + width + "," + depth + "," + dx + "," + mt + "," + error + "," + cursorMag + "," + cameraMag);
 
         //  Debug.Log(participant + " " + condition + " " + block + " " + trial + " " + amp + " " + width + " " + depth + " " + dx + " " + mt + " " + error);
 

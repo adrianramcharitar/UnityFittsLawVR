@@ -13,6 +13,10 @@ public class DeltaPosition2 : MonoBehaviour {
     public GameObject canvas;
     public GameObject cursor;
 
+    public static float cameraMag;
+    public static float cursorMag;
+
+
     // Use this for initialization
     void Start() {
 
@@ -52,14 +56,12 @@ public class DeltaPosition2 : MonoBehaviour {
         float mag2 = Vector3.Distance(canvas.transform.position, PlaneGenerator.cubeCenter);
   
 
-
-
             if (Input.GetButtonUp("Fire1")) {
 
                 
 
                 //Delta for Camera
-                Vector3 deltaCamera = canvas.transform.position - lastPosCamera;
+             Vector3 deltaCamera = canvas.transform.position - lastPosCamera;
 
             //Delta for Cursor
             Vector3 deltaCursor = cursor.transform.position - lastPosCursor;
@@ -67,7 +69,11 @@ public class DeltaPosition2 : MonoBehaviour {
             lastPosCamera = canvas.transform.position;
             lastPosCursor = cursor.transform.position;
 
-            Debug.Log("Camera: " + deltaCamera.magnitude + " Cursor: " + deltaCursor.magnitude);
+            cursorMag = deltaCursor.magnitude;
+            cameraMag = deltaCamera.magnitude;
+
+            Debug.Log("Camera: " + cameraMag + " Cursor: " + cursorMag);
+            Debug.Log("Camera Ratio: " + (deltaCamera.magnitude / deltaCursor.magnitude) + " Cursor Ratio: " + (deltaCursor.magnitude / deltaCamera.magnitude));
 
 
         }
