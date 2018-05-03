@@ -33,8 +33,6 @@ public class DeltaPosition2 : MonoBehaviour {
         //cursor relative to plane center
       //  Vector3 difference = PlaneGenerator.cubeCenter - cursor.transform.position;
        
-
-
         Vector2 cursorPos = new Vector2 (cursor.transform.position.x, cursor.transform.position.y);
        
 
@@ -59,7 +57,6 @@ public class DeltaPosition2 : MonoBehaviour {
             if (Input.GetButtonUp("Fire1")) {
 
                 
-
                 //Delta for Camera
              Vector3 deltaCamera = canvas.transform.position - lastPosCamera;
 
@@ -73,9 +70,7 @@ public class DeltaPosition2 : MonoBehaviour {
             cameraMag = deltaCamera.magnitude;
 
             Debug.Log("Camera: " + cameraMag + " Cursor: " + cursorMag);
-            Debug.Log("Camera Ratio: " + (deltaCamera.magnitude / deltaCursor.magnitude) + " Cursor Ratio: " + (deltaCursor.magnitude / deltaCamera.magnitude));
-
-
+            Debug.Log("Camera Ratio: " + (deltaCamera.magnitude / deltaCursor.magnitude));
         }
 
 

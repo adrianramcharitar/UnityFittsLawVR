@@ -1425,12 +1425,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41924900b39cf144a8a33f38011f2a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: 0
+  input: 8
   trackPosSpeed: 650
   trackRateSpeed: 15
   motionGain: 2000
-  disableRotation: 1
-  participantCode: P999
+  headRotationOn: 1
+  participantCode: P000
   conditonCode: null
 --- !u!114 &1488766937
 MonoBehaviour:
@@ -1985,7 +1985,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointer: {fileID: 1931297875}
-  mouseMoveSpeed: 3
+  mouseMoveSpeed: 0.5
   accScript: {fileID: 1703760617}
 --- !u!65 &1703760609
 BoxCollider:
@@ -2136,7 +2136,7 @@ MonoBehaviour:
   accelerationFactorX: 0
   accelerationFactorY: 0
   setLinearity: 5
-  setIntersection: 0.5
+  setIntersection: 5
 --- !u!1 &1748270888
 GameObject:
   m_ObjectHideFlags: 0

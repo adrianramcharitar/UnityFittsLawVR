@@ -10,9 +10,17 @@ using UnityEngine;
 //C05 = Raycast
 //C06 = Head only
 
+//C07 = Mouse Only - Head Movement On
+//C08 = Transfer Function 1 - Head Movement On
+//C09 = Transfer Function 2 - Head Movement On
+//C10 = Mouse Only - Head Movement Off
+//C11 = Transfer Function 1 - Head Movement Off
+//C12 = Transfer Function 2 - Head Movement Off
+
 
 public enum State {
-    mouse, joystickrate, joystickpos, motiontracked, motionray, head
+    C01Mouse, C02Joystickrate, C03Joystickpos, C04Motiontracked, C05Motionray, C06HeadOnly, C07MouseConstant, C08TransferFunction1, C09TransferFunction2, C10MouseConstantHOff,
+    C11TransferFunction1HOff, C12TransferFunction2HOff
 }
 
 public class SetControlScheme : MonoBehaviour {
@@ -27,11 +35,12 @@ public class SetControlScheme : MonoBehaviour {
     //private MotionControllerRaycast scriptmotiontracked;
     private MotionController2 scriptmotiontracked;
     private DisableRotation disablerotationscript;
+    private MouseAcceleration mouseaccscript;
 
     public float trackPosSpeed;
     public int trackRateSpeed;
     public int motionGain;
-    public bool disableRotation = false;
+    public bool headRotationOn = true;
 
     public string participantCode = "null";
     public string conditonCode = "null";
@@ -46,18 +55,20 @@ public class SetControlScheme : MonoBehaviour {
         //  scriptmotiontracked = GameObject.Find("TrackedHand").GetComponent<MotionControllerRaycast>();
         scriptmotiontracked = GameObject.Find("TrackedHand").GetComponent<MotionController2>();
         disablerotationscript = GameObject.Find("GameObject").GetComponent<DisableRotation>();
-        
-        if (disableRotation == true) {
+        mouseaccscript = GameObject.Find("ReticleCursor").GetComponent<MouseAcceleration>();
+   
+
+        if (headRotationOn == false) {
             disablerotationscript.enabled = true;
-            Logger.headmove = 1;
+            Logger.headmove = 0;
         } else {
             disablerotationscript.enabled = false;
-            Logger.headmove = 0;
+            Logger.headmove = 1;
         }
 
 
 
-        if (input == State.mouse) {
+        if (input == State.C01Mouse) {
 
             conditonCode = "C01";
          
@@ -66,14 +77,11 @@ public class SetControlScheme : MonoBehaviour {
             scriptmotionray.enabled = false;
             scriptmotiontracked.enabled = false;
   
-
             scriptmouse.enabled = true;
-
-           
 
         }
 
-        if(input == State.joystickpos) {
+        if(input == State.C03Joystickpos) {
 
             conditonCode = "C03";
 
@@ -89,7 +97,7 @@ public class SetControlScheme : MonoBehaviour {
 
         }
 
-        if (input == State.joystickrate) {
+        if (input == State.C02Joystickrate) {
 
             conditonCode = "C02";
 
@@ -105,7 +113,7 @@ public class SetControlScheme : MonoBehaviour {
 
         }
 
-        if (input == State.motiontracked) {
+        if (input == State.C04Motiontracked) {
 
             conditonCode = "C04";
 
@@ -120,7 +128,7 @@ public class SetControlScheme : MonoBehaviour {
 
         }
 
-        if (input == State.motionray) {
+        if (input == State.C05Motionray) {
 
             conditonCode = "C05";
 
@@ -132,7 +140,7 @@ public class SetControlScheme : MonoBehaviour {
 
         }
 
-        if(input == State.head) {
+        if(input == State.C06HeadOnly) {
 
             conditonCode = "C06";
 
@@ -144,7 +152,104 @@ public class SetControlScheme : MonoBehaviour {
 
         }
 
-      
+        if(input == State.C07MouseConstant) {
+
+            conditonCode = "C07";
+
+            scriptthumbstick.enabled = false;
+            scriptmotionray.enabled = false;
+            scriptmotiontracked.enabled = false;
+            scriptmouse.enabled = true;
+
+            KBMove.gain = true;
+            disablerotationscript.enabled = false;
+            Logger.headmove = 1;
+        }
+
+        if(input == State.C08TransferFunction1) {
+
+            conditonCode = "C08";
+
+            scriptthumbstick.enabled = false;
+            scriptmotionray.enabled = false;
+            scriptmotiontracked.enabled = false;
+            scriptmouse.enabled = true;
+
+            KBMove.gain = false;
+            mouseaccscript.setLinearity = 0.5f;
+            mouseaccscript.setIntersection = 5f;
+            disablerotationscript.enabled = false;
+            Logger.headmove = 1;
+
+        }
+
+        if (input == State.C09TransferFunction2) {
+
+            conditonCode = "C09";
+
+            scriptthumbstick.enabled = false;
+            scriptmotionray.enabled = false;
+            scriptmotiontracked.enabled = false;
+            scriptmouse.enabled = true;
+
+            KBMove.gain = false;
+            mouseaccscript.setLinearity = 5f;
+            mouseaccscript.setIntersection = 5f;
+            disablerotationscript.enabled = false;
+            Logger.headmove = 1;
+
+        }
+
+        if (input == State.C10MouseConstantHOff) {
+
+            conditonCode = "C10";
+
+            scriptthumbstick.enabled = false;
+            scriptmotionray.enabled = false;
+            scriptmotiontracked.enabled = false;
+            scriptmouse.enabled = true;
+
+            KBMove.gain = true;
+            disablerotationscript.enabled = true;
+            Logger.headmove = 0;
+        }
+
+        if (input == State.C11TransferFunction1HOff) {
+
+            conditonCode = "C11";
+
+            scriptthumbstick.enabled = false;
+            scriptmotionray.enabled = false;
+            scriptmotiontracked.enabled = false;
+            scriptmouse.enabled = true;
+
+            KBMove.gain = false;
+            mouseaccscript.setLinearity = 0.5f;
+            mouseaccscript.setIntersection = 5f;
+            disablerotationscript.enabled = true;
+            Logger.headmove = 0;
+        }
+
+        if (input == State.C12TransferFunction2HOff) {
+
+            conditonCode = "C12";
+
+            scriptthumbstick.enabled = false;
+            scriptmotionray.enabled = false;
+            scriptmotiontracked.enabled = false;
+            scriptmouse.enabled = true;
+
+            KBMove.gain = false;
+            mouseaccscript.setLinearity = 5f;
+            mouseaccscript.setIntersection = 5f;
+            disablerotationscript.enabled = true;
+            Logger.headmove = 0;
+        }
+
+
+
+
+
 
         Logger.participant = participantCode;
         Logger.condition = conditonCode;
