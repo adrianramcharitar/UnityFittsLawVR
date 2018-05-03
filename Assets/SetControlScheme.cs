@@ -224,8 +224,8 @@ public class SetControlScheme : MonoBehaviour {
             scriptmouse.enabled = true;
 
             KBMove.gain = false;
-            mouseaccscript.setLinearity = 0.5f;
-            mouseaccscript.setIntersection = 5f;
+            mouseaccscript.setLinearity = 0.9f;
+            mouseaccscript.setIntersection = 0.2f;
             disablerotationscript.enabled = true;
             Logger.headmove = 0;
         }

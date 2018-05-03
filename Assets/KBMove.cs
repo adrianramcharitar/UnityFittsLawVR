@@ -25,8 +25,9 @@ public class KBMove : MonoBehaviour {
         if (gain == true) {
             mousePos += new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseMoveSpeed;
         }else if(gain == false) {
-          //mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationFactorX, Input.GetAxis("Mouse Y") * accScript.accelerationFactorY) * mouseMoveSpeed;
-            mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationFactorX, Input.GetAxis("Mouse Y") * accScript.accelerationFactorY) * mouseMoveSpeed;
+            //mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationFactorX, Input.GetAxis("Mouse Y") * accScript.accelerationFactorY) * mouseMoveSpeed;
+            // UNCOMMENT AFTER   mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationFactorX, Input.GetAxis("Mouse Y") * accScript.accelerationFactorY) * mouseMoveSpeed;
+            mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationMagnitude, Input.GetAxis("Mouse Y") * accScript.accelerationMagnitude) * mouseMoveSpeed;
         }
         float currentPanelWidth = GetComponent<RectTransform>().rect.width;
         float currentPanelHeight = GetComponent<RectTransform>().rect.height;

@@ -21,6 +21,8 @@ public class MouseAcceleration : MonoBehaviour {
     public float setLinearity = 4f;
     public float setIntersection = 0.5f;
 
+    public float accelerationMagnitude;
+
 
 
 
@@ -43,10 +45,6 @@ public class MouseAcceleration : MonoBehaviour {
       //  Debug.Log(Input.GetAxisRaw("Mouse X"));
 
 
-        //   if (mouseAcceleration) {
-        //check your input to calibrate intersection points
-        // Debug.Log("Acc " + curMouseX);
-
         //(1/(0.5+4))*  x*(Abs(x)+4)
         // float linearity = 4F;   // higher values mean more linear curve, less acceleration
         // float intersection = 0.5F; // point where accelerated curve intersects with linear curve
@@ -61,7 +59,10 @@ public class MouseAcceleration : MonoBehaviour {
 
         accelerationFactorX = Mathf.Abs(curMouseX);
         accelerationFactorY = Mathf.Abs(curMouseY);
-      //  Debug.Log("Acc Abs X: " + accelerationFactorX + " Acc Abs Y: " + accelerationFactorY);
+        //  Debug.Log("Acc Abs X: " + accelerationFactorX + " Acc Abs Y: " + accelerationFactorY);
+        accelerationMagnitude = new Vector2(accelerationFactorX, accelerationFactorY).magnitude;
+
+        Debug.Log("Acc Normal: " + accelerationMagnitude);
     }
 
 
