@@ -6,7 +6,8 @@ public class KBMove : MonoBehaviour {
 
     public GameObject pointer;
 
-    public float mouseMoveSpeed = 5;
+    public float mouseMoveSpeed = 5f;
+    public float mouseaAccFactor = 5f;
 
     public MouseAcceleration accScript;
     public static bool gain;
@@ -20,14 +21,19 @@ public class KBMove : MonoBehaviour {
 	void Update () {
 
 
-
+    //    oldMousePos = mousePos;
         Vector2 mousePos = pointer.GetComponent<RectTransform>().localPosition;
+       
+        //Debug.Log( "Axis" + Input.GetAxis("Mouse X") + " " + Input.GetAxis("Mouse Y"));
         if (gain == true) {
             mousePos += new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y")) * mouseMoveSpeed;
+            Debug.Log("CONSTANT");
         }else if(gain == false) {
+
+         //   Debug.Log("ACC");
             //mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationFactorX, Input.GetAxis("Mouse Y") * accScript.accelerationFactorY) * mouseMoveSpeed;
-            // UNCOMMENT AFTER   mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationFactorX, Input.GetAxis("Mouse Y") * accScript.accelerationFactorY) * mouseMoveSpeed;
-            mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationMagnitude, Input.GetAxis("Mouse Y") * accScript.accelerationMagnitude) * mouseMoveSpeed;
+            // mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationFactorX, Input.GetAxis("Mouse Y") * accScript.accelerationFactorY) * mouseMoveSpeed;
+            mousePos += new Vector2(Input.GetAxis("Mouse X") * accScript.accelerationMagnitude, Input.GetAxis("Mouse Y") * accScript.accelerationMagnitude) * mouseaAccFactor;
         }
         float currentPanelWidth = GetComponent<RectTransform>().rect.width;
         float currentPanelHeight = GetComponent<RectTransform>().rect.height;

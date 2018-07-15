@@ -17,10 +17,12 @@ using UnityEngine;
 //C11 = Transfer Function 1 - Head Movement Off
 //C12 = Transfer Function 2 - Head Movement Off
 
+    //TEST = Acc Function Test
+
 
 public enum State {
     C01Mouse, C02Joystickrate, C03Joystickpos, C04Motiontracked, C05Motionray, C06HeadOnly, C07MouseConstant, C08TransferFunction1, C09TransferFunction2, C10MouseConstantHOff,
-    C11TransferFunction1HOff, C12TransferFunction2HOff
+    C11TransferFunction1HOff, C12TransferFunction2HOff, TEST
 }
 
 public class SetControlScheme : MonoBehaviour {
@@ -161,25 +163,34 @@ public class SetControlScheme : MonoBehaviour {
             scriptmotiontracked.enabled = false;
             scriptmouse.enabled = true;
 
+
             KBMove.gain = true;
             disablerotationscript.enabled = false;
+            mouseaccscript.sigmoid = false;
+            mouseaccscript.step = false;
+
             Logger.headmove = 1;
         }
 
-        if(input == State.C08TransferFunction1) {
-
+        //Mouse move speed = 2
+        //Acc Factor = 0.275
+        if (input == State.C08TransferFunction1) {
+ 
             conditonCode = "C08";
 
             scriptthumbstick.enabled = false;
             scriptmotionray.enabled = false;
             scriptmotiontracked.enabled = false;
             scriptmouse.enabled = true;
-
             KBMove.gain = false;
-            mouseaccscript.setLinearity = 0.5f;
-            mouseaccscript.setIntersection = 5f;
             disablerotationscript.enabled = false;
+            mouseaccscript.sigmoid = true;
+            mouseaccscript.step = false;
             Logger.headmove = 1;
+            mouseaccscript.a = 3.3f;
+            mouseaccscript.b = -0.4f;
+            mouseaccscript.k = 16f;
+
 
         }
 
@@ -193,8 +204,10 @@ public class SetControlScheme : MonoBehaviour {
             scriptmouse.enabled = true;
 
             KBMove.gain = false;
-            mouseaccscript.setLinearity = 5f;
-            mouseaccscript.setIntersection = 5f;
+            mouseaccscript.setLinearity = 750f; //Final
+            mouseaccscript.setIntersection = 0f; //Final
+            mouseaccscript.sigmoid = false;
+            mouseaccscript.step = false;
             disablerotationscript.enabled = false;
             Logger.headmove = 1;
 
@@ -215,7 +228,7 @@ public class SetControlScheme : MonoBehaviour {
         }
 
         if (input == State.C11TransferFunction1HOff) {
-
+            
             conditonCode = "C11";
 
             scriptthumbstick.enabled = false;
@@ -224,10 +237,19 @@ public class SetControlScheme : MonoBehaviour {
             scriptmouse.enabled = true;
 
             KBMove.gain = false;
-            mouseaccscript.setLinearity = 0.9f;
-            mouseaccscript.setIntersection = 0.2f;
             disablerotationscript.enabled = true;
+            mouseaccscript.sigmoid = true;
+            mouseaccscript.step = false;
             Logger.headmove = 0;
+
+            mouseaccscript.a = 3.3f;
+            mouseaccscript.b = -0.4f;
+            mouseaccscript.k = 16f;
+
+
+
+
+
         }
 
         if (input == State.C12TransferFunction2HOff) {
@@ -240,10 +262,36 @@ public class SetControlScheme : MonoBehaviour {
             scriptmouse.enabled = true;
 
             KBMove.gain = false;
-            mouseaccscript.setLinearity = 5f;
-            mouseaccscript.setIntersection = 5f;
+            mouseaccscript.setLinearity = 750f; //Final
+            mouseaccscript.setIntersection = 0f; //Final
+            mouseaccscript.sigmoid = false;
+            mouseaccscript.step = false;
             disablerotationscript.enabled = true;
             Logger.headmove = 0;
+        }
+
+        if(input == State.TEST) {
+
+            
+            scriptthumbstick.enabled = false;
+            scriptmotionray.enabled = false;
+            scriptmotiontracked.enabled = false;
+            scriptmouse.enabled = true;
+            KBMove.gain = false;
+            conditonCode = "TEST";
+            mouseaccscript.sigmoid = true;
+            mouseaccscript.step = false;
+            disablerotationscript.enabled = false;
+
+            mouseaccscript.a = 9f;
+            mouseaccscript.b = -1.1f;
+            mouseaccscript.k = 15f;
+            
+
+          
+
+
+
         }
 
 
